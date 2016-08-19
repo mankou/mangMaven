@@ -230,6 +230,8 @@ public class TimeUtil {
 	
 	/**计算两个时间的时间差
 	 * <p>time1.getTime()-time2.getTime()
+	 * @param time1 time1
+	 * @param time2 time2
 	 * @param unit 返回时间差的单位: millisecond  second  min hour
 	 * @return Long 返回值是Long型的 只返回整数
 	 * */
@@ -241,7 +243,10 @@ public class TimeUtil {
 	/**
 	 * 计算2个时间的时间间隔   time1-time2.
 	 * @param unit 单位 hour day week month year
-	 * 
+	 * @param time1 time1
+	 * @param time2 time2
+	 * @param unit 单位
+	 * @return Double time1-time2后的数值
 	 * */
 	public static Double computeTimeDoubleInterval(Timestamp time1, Timestamp time2, String unit) {
 		long timeCount = (time1.getTime() - time2.getTime());
@@ -274,6 +279,8 @@ public class TimeUtil {
 	/**
 	 * 给一个时间 返回时间的字符串   采用默认的时间格式 如time 为 2015-08-01 00:00:00 返回2015-08-01.
 	 * 默认的时间格式为yyyy-MM-dd
+	 * @param time 时间
+	 * @return String 格式化后时间字符串
 	 * */
 	public static String getDateString(Timestamp time){
 		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  
@@ -286,6 +293,7 @@ public class TimeUtil {
 	 * 需自己传入时间格式
 	 * @param time 时间
 	 * @param format 日期格式  如yyyy-MM-dd yyyyMMddHHmmss
+	 * @return String 格式化后的时间字符串
 	 * */
 	public static String getDateString(Timestamp time,String format){
 		DateFormat sdf = new SimpleDateFormat(format);  
@@ -297,6 +305,7 @@ public class TimeUtil {
 	 * 返回当前时间的时间字符串 .
 	 * 需自己传入时间格式
 	 * @param format 日期格式  如yyyy-MM-dd yyyyMMddHHmmss
+	 * @return String 格式化后的时间字符串
 	 * */
 	public static String getCurrentDateString(String format){
 		Timestamp time = getCurrentTime();
@@ -317,6 +326,9 @@ public class TimeUtil {
 	/**
 	 * 返回两个时间中最小的那个.
 	 * 如果有一个为空 则返回另一个。如果两个都为空 则返回空
+	 * @param time1 time1
+	 * @param time2 time2
+	 * @return Timestamp 较小的时间
 	 * */
 	public static Timestamp min(Timestamp time1,Timestamp time2){
 		if(time1==null) return time2;
@@ -329,6 +341,10 @@ public class TimeUtil {
 	/**
 	 * 返回两个时间中最大的那个.
 	 * 如果有一个为空 则返回另一个。如果两个都为空 则返回空
+	 * 
+	 * @param time1 time1
+	 * @param time2 time2
+	 * @return Timestamp 较大的时间
 	 * */
 	public static Timestamp max(Timestamp time1,Timestamp time2){
 		if(time1==null) return time2;

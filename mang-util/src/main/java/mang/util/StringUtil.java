@@ -99,6 +99,10 @@ public class StringUtil {
 	 * 添加引号,将如下  1,2,3 处理成 '1','2','3'.
 	 * <p>一般用于拼接sql
 	 * 调用示例 addAuta(str,",","'")
+	 * @param str 要处理的字符串
+	 * @param split 分隔符
+	 * @param replace 替换字符
+	 * @return String 处理后的字符串
 	 * */
 	public static String addQuota(String str,String split,String replace){
 		String str1 = str.replaceAll(split, replace+split+replace);
@@ -111,9 +115,10 @@ public class StringUtil {
 	 * <p>可去除字符串中的数字，可根据参数location的设置 去除字符串头部、尾部、所有的数字
 	 * @param str 需要去除数字的字符串
 	 * @param location  
-	 * <li>start表示去掉头部的数字 如传入"123中国456" 返回 "中国456"
-	 * <li>end 表示去掉尾部的数字   如传入"123中国456"  返回"123中国"
-	 * <li>其它值 去掉全部数字
+	 * start表示去掉头部的数字 如传入"123中国456" 返回 "中国456"
+	 * end 表示去掉尾部的数字   如传入"123中国456"  返回"123中国"
+	 * 其它值 去掉全部数字
+	 * @return String
 	 * 
 	 * */
 	public static String cleanNumber(String str,String location){
@@ -132,6 +137,10 @@ public class StringUtil {
 	/**
 	 * 选择字符串，如果新字符串不空返回新的字符串.
 	 * 如果newStr不是null也不是空字符串，则返回newStr,否则返回oldStr 常用于设置配置 如果配置了用配置的 没有配置用默认的
+	 * 
+	 * @param oldStr 要处理的字符串
+	 * @param newStr 新字符串
+	 * @return 选择后的字符串
 	 * */
 	public static String select(String oldStr,String newStr){
 		if(newStr==null||"".equals(newStr)){
@@ -146,6 +155,7 @@ public class StringUtil {
 	 *  如果str为空 则也返回空
 	 *  @param str 要处理的字符串
 	 *  @param split 分隔符
+	 *  @return String[] 转换后的数组
 	 * */
 	public static String[] splitToArray(String str, String split) {
 		if (str != null) {
@@ -159,6 +169,10 @@ public class StringUtil {
 	/**
 	 * 拼接sql用. 
 	 * 精确查询拼接
+	 * @param hql hql语句
+	 * @param column 列
+	 * @param value 值
+	 * @return String 拼接后的sql
 	 * */
 	public static String joinHql(String hql,String column,String value){
 		if(value != null && !"".equals(value)){
@@ -174,6 +188,7 @@ public class StringUtil {
 	 * @param value 值
 	 * @param leftLike 左like 如果需要左like就写% 如果不需要就写空字符串
 	 * @param rightLike rightLike 如果需要右like就写% 如果不需要就写空字符串
+	 * @return hql 返回拼接好的string
 	 * */
 	public static String joinHqlLike(String hql, String column, String value, String leftLike, String rightLike) {
 		leftLike = NullUtil.processNull(leftLike);
@@ -192,6 +207,7 @@ public class StringUtil {
 	 * @param hql hql语句
 	 * @param column 列名
 	 * @param value 值
+	 * @return hql 返回拼接好的hql
 	 * */
 	public static String joinHqlIn(String hql, String column, String value){
 		if (value != null && !"".equals(value)) {
@@ -207,6 +223,10 @@ public class StringUtil {
 	 * 判断用分隔符分隔的字符串是否包含子字符串.
 	 * 例1: indexOf("001,002","001",",") 则返回true
 	 * 例1: indexOf("001,002","0",",") 则返回false
+	 * @param str 要判断的字符串
+	 * @param subStr 子字符串
+	 * @param split 分隔符
+	 * @return boolean true或false
 	 * */
 	public static boolean indexOf(String str,String subStr,String split){
 		if(str==null||"".equals(str)){
@@ -264,6 +284,7 @@ public class StringUtil {
 	 * 如"001,002,001" 则返回"001,002";
 	 * @param str 待处理的字符串
 	 * @param split 分隔符
+	 * @return String 处理后字符串
 	 * */
 	public static String removeRepeat(String str,String split){
 		if(str==null||"".equals(str)){

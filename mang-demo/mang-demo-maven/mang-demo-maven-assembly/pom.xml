@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>mang-demo-maven-assembly</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>mang-demo-maven-assembly</name>
+  <url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>mang.maven</groupId>
+		<artifactId>mang-demo-maven</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+  
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+		<groupId>mang.maven</groupId>
+		<artifactId>mang-util</artifactId>
+		<version>2.0.0</version>
+		</dependency>
+  </dependencies>
+  
+  <build>
+<!--   其会影响打包的名子 所以还是不用了 因为我喜欢默认的名字 其带版本信息
+	jar插件  mang-demo-maven-assembly.jar
+	assembly插件 mang-demo-maven-assembly-distribution.zip 
+ -->
+<!--   	 <finalName>mang-demo-maven-assembly</finalName> -->
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.4</version>
+			<configuration>
+				<archive>
+<!-- 				这里设置主类 则打出的jar包是可运行的那种 可以用start-jar.bat启动  -->
+					<manifest>
+<!-- 					MANIFEST.MF中是否设置classpath 如果为true则会把依赖的jar包加到这里 -->
+						<addClasspath>true</addClasspath>
+						<mainClass>mang.demo.maven.assembly.TestMavenUtil</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+		</plugin>
+		<plugin>
+	<artifactId>maven-assembly-plugin</artifactId>
+	<version>2.6</version>
+	<executions>
+		<execution>
+			<id>make-zip</id>
+			<!-- 绑定到package生命周期阶段上 -->
+			<phase>package</phase>
+			<goals>
+				<!-- 绑定到package生命周期阶段上 -->
+				<goal>single</goal>
+			</goals>
+			<configuration>
+				<descriptors> <!--描述文件路径 -->
+					<descriptor>src/assembly/assembly.xml</descriptor>
+				</descriptors>
+			</configuration>
+		</execution>
+	</executions>
+</plugin>
+	</plugins>
+</build>  
+</project>
