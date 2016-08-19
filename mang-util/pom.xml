@@ -5,10 +5,10 @@
   <parent>
     <groupId>mang.maven</groupId>
     <artifactId>mang</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${mang.version}</version>
   </parent>
   <artifactId>mang-util</artifactId>
-  <version>2.0.0</version>
+  <version>${mang-util.version}</version>
   <name>mang-util</name>
   <url>http://maven.apache.org</url>
   <dependencies>

@@ -3,13 +3,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>mang-demo-maven-assembly</artifactId>
+  <version>${mang-demo-maven-assembly.version}</version>
   <name>mang-demo-maven-assembly</name>
   <url>http://maven.apache.org</url>
 
 	<parent>
 		<groupId>mang.maven</groupId>
 		<artifactId>mang-demo-maven</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${mang-demo-maven.version}</version>
 	</parent>
   
   
@@ -21,7 +22,7 @@
     <dependency>
 		<groupId>mang.maven</groupId>
 		<artifactId>mang-util</artifactId>
-		<version>2.0.0</version>
+		<version>${mang-util.version}</version>
 		</dependency>
   </dependencies>
   
@@ -36,7 +37,7 @@
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-jar-plugin</artifactId>
-			<version>2.4</version>
+			<version>${maven-jar-plugin.version}</version>
 			<configuration>
 				<archive>
 <!-- 				这里设置主类 则打出的jar包是可运行的那种 可以用start-jar.bat启动  -->
@@ -50,7 +51,7 @@
 		</plugin>
 		<plugin>
 	<artifactId>maven-assembly-plugin</artifactId>
-	<version>2.6</version>
+	<version>${maven-assembly-plugin.version}</version>
 	<executions>
 		<execution>
 			<id>make-zip</id>

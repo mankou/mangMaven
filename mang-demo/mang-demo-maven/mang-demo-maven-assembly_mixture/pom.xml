@@ -5,10 +5,11 @@
   <parent>
     <groupId>mang.maven</groupId>
     <artifactId>mang-demo-maven</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${mang-demo-maven.version}</version>
   </parent>
   
   <artifactId>mang-demo-maven-assembly_mixture</artifactId>
+  <version>${mang-demo-maven-assembly_mixture.version}</version>
   <name>mang-demo-maven-assembly_mixture</name>
   <url>http://maven.apache.org</url>
   <dependencies>
@@ -19,7 +20,7 @@
     <dependency>
       <groupId>mang.maven</groupId>
       <artifactId>mang-util</artifactId>
-      <version>2.0.0</version>
+      <version>${mang-util.version}</version>
     </dependency>
     
   </dependencies>
@@ -27,31 +28,31 @@
 	<!-- 注该例子用jar插件打包，所以可以指定主类，然后用assembly把相关jar包拷到lib下，把bin拷到根目录下 -->
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>1.2.1</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<transformers>
-								<transformer
-									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>mang.demo.maven.assembly_mixture.TestMavenUtil</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-shade-plugin</artifactId> -->
+<!-- 				<version>1.2.1</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<phase>package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>shade</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<transformers> -->
+<!-- 								<transformer -->
+<!-- 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> -->
+<!-- 									<mainClass>mang.demo.maven.assembly_mixture.TestMavenUtil</mainClass> -->
+<!-- 								</transformer> -->
+<!-- 							</transformers> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.6</version>
+				<version>${maven-assembly-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>make-zip</id>

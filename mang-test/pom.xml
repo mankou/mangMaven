@@ -6,17 +6,17 @@
 	<parent>
 		<groupId>mang.maven</groupId>
 		<artifactId>mang</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${mang.version}</version>
 	</parent>
 	<artifactId>mang-test</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${mang-test.version}</version>
 	<name>mang-test</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
 			<groupId>mang.maven</groupId>
 			<artifactId>mang-util</artifactId>
-			<version>2.0.0</version>
+			<version>${mang-util.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -29,7 +29,7 @@
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-jar-plugin</artifactId>
-			<version>2.4</version>
+			<version>${maven-jar-plugin.version}</version>
 			<configuration>
 				<archive>
 					<manifest>
@@ -41,7 +41,7 @@
 		</plugin>
 		<plugin>
 			<artifactId>maven-assembly-plugin</artifactId>
-			<version>2.6</version>
+			<version>${maven-assembly-plugin.version}</version>
 			<executions>
 				<execution>
 					<id>make-zip</id>
