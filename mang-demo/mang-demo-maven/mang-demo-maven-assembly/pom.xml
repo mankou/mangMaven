@@ -3,7 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>mang-demo-maven-assembly</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>mang-demo-maven-assembly</name>
   <url>http://maven.apache.org</url>
 
@@ -26,6 +25,7 @@
 		</dependency>
   </dependencies>
   
+<!--  注该例子用jar插件打包，所以可以指定主类，然后用assembly把相关jar包拷到lib下，把bin拷到根目录下  -->
   <build>
 <!--   其会影响打包的名子 所以还是不用了 因为我喜欢默认的名字 其带版本信息
 	jar插件  mang-demo-maven-assembly.jar
