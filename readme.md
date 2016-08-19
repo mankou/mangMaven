@@ -11,3 +11,15 @@
 * 创建于20160816纯粹是一个练习、测试的工程 
 * 当需要测试时可以在该工程中写代码
 * 目前建立是为了测试maven:将mang-util发布到本地仓库后其它工程可以用该工程
+
+## mang-demo
+* 以后我所有的demo都放在该目录下
+
+### mang-demo-maven
+* 关于maven的demo
+
+#### mang-demo-maven-assembly
+* 用 assembly 打分发包的例子
+
+#### mang-demo-maven-assembly_withDependeyncy
+* 用 assembly 打jar-with-dependency的例子
