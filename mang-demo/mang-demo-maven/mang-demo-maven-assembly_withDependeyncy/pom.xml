@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>mang-demo-maven-assembly_withDependeyncy</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>mang-demo-maven-assembly_withDependeyncy</name>
+  <url>http://maven.apache.org</url>
+  
+  <parent>
+    <groupId>mang.maven</groupId>
+    <artifactId>mang-demo-maven</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>mang.maven</groupId>
+      <artifactId>mang-util</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>2.6</version>
+			<configuration>
+				<!-- 注如果是true则其生成的jar包不会覆盖jar生成的jar包 而是自己加一个后缀 如 mang-test-0.0.1-SNAPSHOT-jar-with-dependencies.jar 
+					如果是false则会覆盖jar生成的jar包 注如果不写默认是true 如果不写就和官网的例子一样了 -->
+				<appendAssemblyId>true</appendAssemblyId>
+				<descriptorRefs>
+					<descriptorRef>jar-with-dependencies</descriptorRef>
+				</descriptorRefs>
+				<archive>
+<!-- 				注：因为这里把依赖的jar包都打到一个jar里了,所以也没不需要指定class-path了 -->
+					<manifest>
+						<mainClass>mang.demo.maven.assembly_withDependeyncy.TestMavenUtil</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+			<executions>
+				<execution>
+					<id>make-assembly</id>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+  
+  
+</project>

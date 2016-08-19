@@ -14,5 +14,6 @@
   
   <modules>
     <module>mang-demo-maven-assembly</module>
+    <module>mang-demo-maven-assembly_withDependeyncy</module>
   </modules>
 </project>
