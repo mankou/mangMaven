@@ -15,5 +15,7 @@
   <modules>
     <module>mang-demo-maven-assembly</module>
     <module>mang-demo-maven-assembly_withDependeyncy</module>
+    <module>mang-demo-maven-assembly_mixture</module>
+    <module>mang-demo-maven-shade</module>
   </modules>
 </project>
