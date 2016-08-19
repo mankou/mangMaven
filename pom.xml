@@ -18,7 +18,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<junit.version>3.8.1</junit.version>
+    
+<!-- 	自己工程的版本     -->
 	<mang.version>${project.version}</mang.version>
 	<mang-util.version>2.0.0</mang-util.version>
 	<mang-test.version>0.0.1-SNAPSHOT</mang-test.version>
@@ -27,6 +28,11 @@
 	<mang-demo-maven-assembly.version>0.0.1-SNAPSHOT</mang-demo-maven-assembly.version>
 	<mang-demo-maven-assembly_withDependency>0.0.1-SNAPSHOT</mang-demo-maven-assembly_withDependency>
 	<mang-demo-maven-assembly_mixture.version>0.0.1-SNAPSHOT</mang-demo-maven-assembly_mixture.version>
+    
+<!--     依赖的工程的版本 -->
+	<junit.version>3.8.1</junit.version>
+	
+<!-- 	maven插件版本 -->
   	<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
   	<maven-assembly-plugin.version>2.6</maven-assembly-plugin.version>
   	<maven-jar-plugin.version>2.4</maven-jar-plugin.version>
@@ -45,10 +51,11 @@
 
 <build>
 	<plugins>
+<!-- 	将jar包统一复制到一个路径方便以后使用 -->
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-dependency-plugin</artifactId>
-			<version>2.10</version>
+			<version>${maven-dependency-plugin.version}</version>
 			<executions>
 				<execution>
 					<id>copy</id>
