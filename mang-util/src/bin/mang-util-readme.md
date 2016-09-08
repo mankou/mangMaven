@@ -2,8 +2,10 @@
 * 整理自己的工具类形成自己的jar包
 
 # 版本说明
-  	# V2.0.0
-  		+ 将代码纳入maven管理 同时将代码从mangJavaSample移到mang-util工程下
+    # V2.0.1
+		+ 添加PropertyUtil.java 用于读取property配置文件
+	# V2.0.0
+		+ 将代码纳入maven管理 同时将代码从mangJavaSample移到mang-util工程下
 
 	# V1.1.13
 		+ CopyUtil增加拷备指定属性的公用代码
