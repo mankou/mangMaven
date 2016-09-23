@@ -52,6 +52,8 @@ public class CopyUtil{
 				excludeField = new ArrayList<String>();
 			}
 			fields = removeFiled(fields, excludeField);
+			
+			//TODO 用field.set()的方式设置 不用set/get方法了
 			if (null != fields && fields.size() > 0) {
 				
 				for (int i = 0; i < fields.size(); i++) {

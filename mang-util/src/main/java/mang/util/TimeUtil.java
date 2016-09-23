@@ -354,4 +354,28 @@ public class TimeUtil {
 		return time1.getTime()>time2.getTime()? time1:time2;
 	}
 	
+	/**
+	 * 将date 转换成 timestamp类型
+	 * 
+	 * */
+	public static Timestamp convertDateToTimestamp(Date from){
+		Timestamp time=null;
+		if(from!=null){
+			time=new Timestamp(from.getTime());
+		}
+		return time;
+	}
+	
+	/**
+	 * 将date 转换成 timestamp类型
+	 * 
+	 * */
+	public static Date convertTimestampToDate(Timestamp from){
+		Date date=null;
+		if(from!=null){
+			date=new Date(from.getTime());
+		}
+		return date;
+	}
+	
 }
