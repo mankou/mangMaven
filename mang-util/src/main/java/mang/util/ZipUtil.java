@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
@@ -19,12 +20,64 @@ import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 import org.apache.tools.zip.ZipOutputStream;
 
+/**
+ * zip压缩文件工具类.
+ * 可压缩文件 也可压缩文件夹
+ * 
+ * @author man003@163.com
+ * @version
+ * create:2016-09-28 17:45:08
+ * modify:2016-09-28 17:45:11
+ * */
 public class ZipUtil
 {
   static final int BUFFER = 8192;
+  
+  /**
+   * zip压缩文件或文件
+   * 
+   * @param sourcePath 要压缩的文件的路径 可以是文件夹的路径 也可以是文件的路径
+   * @param zipFilePath 压缩文件路径
+   * @param baseDir 压缩时的基准路径
+   * <ol>
+   * <li> 如果想将文件压缩到根路径 则传入 "" 即可 </li>
+   * <li> 如果希望压缩文件的根路径为 123 则传入"123" 则压缩文件中的根路径是"123/你要压缩的文件" </li>
+   * <li> 如果希望压缩文件的根路径为 123/456 则传入"123/456" 则压缩文件中的根路径是"123/456/你要压缩的文件" </li>
+   * <ol>
+   * */
+	public static void compress(String sourcePath, String zipFilePath, String baseDir) {
+		
+		List sourceListPath = new ArrayList<String>();
+		sourceListPath.add(sourcePath);
+		compress(sourceListPath, zipFilePath, baseDir);
+	}
+	
+	
+	public static void compress(List<String> sourcePath, String zipFilePath, String baseDir) {
 
-  public static void compress(File file, ZipOutputStream out, String basedir)
-  {
+		try {
+
+			FileUtil.mkParentDir(new File(zipFilePath));
+
+			FileOutputStream fileOutputStream = new FileOutputStream(zipFilePath);
+			CheckedOutputStream cos = new CheckedOutputStream(fileOutputStream, new CRC32());
+			ZipOutputStream out = new ZipOutputStream(cos);
+			out.setEncoding(System.getProperty("sun.jnu.encoding"));// 设置文件名编码方式
+
+			for (String source : sourcePath) {
+				if (baseDir != null && !"".equals(baseDir)) {
+					baseDir = FileUtil.processEndSeparator(baseDir);
+				}
+				compress(new File(source), out, baseDir);
+			}
+			out.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+
+	}
+
+  private static void compress(File file, ZipOutputStream out, String basedir){
     /* 判断是目录还是文件 */
     if (file.isDirectory())
     {
@@ -37,7 +90,7 @@ public class ZipUtil
   }
 
   /** 压缩一个目录 */
-  public static void compressDirectory(File dir, ZipOutputStream out, String basedir)
+  private static void compressDirectory(File dir, ZipOutputStream out, String basedir)
   {
     if (!dir.exists()) return;
     File[] files = dir.listFiles();

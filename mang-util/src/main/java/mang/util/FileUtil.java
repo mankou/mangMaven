@@ -220,11 +220,23 @@ public class FileUtil {
 	 * 注：有时在windows下你也可能把路径写成c:/Users/mang/Desktop/haiguan/Send 然后处理成c:/Users/mang/Desktop/haiguan/Send\ 但经测试不影响使用
 	 * */
 	public static String processEndSeparator(String path){
-		 if (!path.endsWith(File.separator)) {
+		//TODO 还有一种情况 就是有可能是windows下 但其传的路径类似  "123/" 则你会处理成 "123/\" 也不对
+		
+		 if (!(path.endsWith(File.separator) || path.endsWith("\\") || path.endsWith("/"))) {
 			 path+=File.separator;
 		 }
 		 return path;
 	}
-
+	
+	
+	/**
+	 * 根据文件路径获取文件名.
+	 * 
+	 * */
+	public static String getFileName(String path){
+		File file=new File(path);
+		String fileName=file.getName();
+		return fileName;
+	}
 
 }
