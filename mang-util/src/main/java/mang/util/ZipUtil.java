@@ -34,7 +34,7 @@ public class ZipUtil
   static final int BUFFER = 8192;
   
   /**
-   * zip压缩文件或文件
+   * zip压缩文件或文件（只能是一个文件或文件夹）
    * 
    * @param sourcePath 要压缩的文件的路径 可以是文件夹的路径 也可以是文件的路径
    * @param zipFilePath 压缩文件路径
@@ -52,8 +52,19 @@ public class ZipUtil
 		compress(sourceListPath, zipFilePath, baseDir);
 	}
 	
-	
-	public static void compress(List<String> sourcePath, String zipFilePath, String baseDir) {
+	 /**
+	   * zip压缩一组文件或文件
+	   * 
+	   * @param sourcePathList 要压缩的文件的路径 是一个list<String>
+	   * @param zipFilePath 压缩文件路径
+	   * @param baseDir 压缩时的基准路径
+	   * <ol>
+	   * <li> 如果想将文件压缩到根路径 则传入 "" 即可 </li>
+	   * <li> 如果希望压缩文件的根路径为 123 则传入"123" 则压缩文件中的根路径是"123/你要压缩的文件" </li>
+	   * <li> 如果希望压缩文件的根路径为 123/456 则传入"123/456" 则压缩文件中的根路径是"123/456/你要压缩的文件" </li>
+	   * <ol>
+	   * */
+	public static void compress(List<String> sourcePathList, String zipFilePath, String baseDir) {
 
 		try {
 
@@ -64,7 +75,7 @@ public class ZipUtil
 			ZipOutputStream out = new ZipOutputStream(cos);
 			out.setEncoding(System.getProperty("sun.jnu.encoding"));// 设置文件名编码方式
 
-			for (String source : sourcePath) {
+			for (String source : sourcePathList) {
 				if (baseDir != null && !"".equals(baseDir)) {
 					baseDir = FileUtil.processEndSeparator(baseDir);
 				}

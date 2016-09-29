@@ -5,6 +5,9 @@ import java.util.List;
 
 import mang.util.ZipUtil;
 
+/**
+ * ZipUtil 使用示例.
+ * */
 public class ZipDemo {
 
 	public static void main(String[] args) {
