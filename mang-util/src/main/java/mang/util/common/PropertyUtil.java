@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

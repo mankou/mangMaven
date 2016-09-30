@@ -21,7 +21,7 @@
     
 <!-- 	自己工程的版本     -->
 	<mang.version>${project.version}</mang.version>
-	<mang-util.version>2.0.1</mang-util.version>
+	<mang-util.version>2.0.2</mang-util.version>
 	<mang-test.version>0.0.1-SNAPSHOT</mang-test.version>
 	<mang-demo.version>0.0.1-SNAPSHOT</mang-demo.version>
 	<mang-demo-maven.version>0.0.1-SNAPSHOT</mang-demo-maven.version>
@@ -31,6 +31,8 @@
     
 <!--     依赖的工程的版本 -->
 	<junit.version>3.8.1</junit.version>
+	<ant.version>1.9.4</ant.version>
+	<freemarker.version>2.3.23</freemarker.version>
 	
 <!-- 	maven插件版本 -->
   	<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>

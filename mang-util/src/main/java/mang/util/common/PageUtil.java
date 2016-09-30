@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 /**
  * 处理页数的工具类.

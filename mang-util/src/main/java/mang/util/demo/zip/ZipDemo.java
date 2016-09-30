@@ -3,7 +3,7 @@ package mang.util.demo.zip;
 import java.util.ArrayList;
 import java.util.List;
 
-import mang.util.ZipUtil;
+import mang.util.common.ZipUtil;
 
 /**
  * ZipUtil 使用示例.

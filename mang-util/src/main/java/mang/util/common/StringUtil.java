@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

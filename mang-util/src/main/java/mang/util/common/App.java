@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 /**
  * Hello world!

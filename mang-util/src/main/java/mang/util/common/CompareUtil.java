@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;

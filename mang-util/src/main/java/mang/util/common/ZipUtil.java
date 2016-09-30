@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 import java.io.BufferedInputStream;
 import java.io.File;

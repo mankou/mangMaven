@@ -1,4 +1,4 @@
-package mang.util;
+package mang.util.common;
 
 /**
  * 拼接sql语句的公用类.
