@@ -3,6 +3,9 @@
 # TODO
 * 整理一套能用的mvn命令写成文档 把配置文件都配置好 要求能一个命令打包、生成源码、javadoc  能把源码、javadoc、jar安装的maven仓库 目前我执行mvn install报错 不能把jar包安装到maven仓库
 # 版本说明
+	# V2.0.2
+		+ 增加用freemaker生成word的工具类.
+		+ 重新规划了包路径 增加了demo包存放一些demo 将原来的工具类放到common包类型
     # V2.0.1
 		+ 添加PropertyUtil.java 用于读取property配置文件
 	# V2.0.0
