@@ -1,4 +1,4 @@
-package mang.util.doc;
+package mang.util.doc.freemarker;
 
 import java.io.File;
 import java.util.Map;

@@ -3,7 +3,7 @@ package mang.util.demo.doc.freemarker;
 import java.util.HashMap;
 import java.util.Map;
 
-import mang.util.doc.WordFreemarkerUtil;
+import mang.util.doc.freemarker.WordFreemarkerUtil;
 
 /**
  * 演示 基于freemaker生成word

@@ -1,4 +1,4 @@
-package mang.util.doc;
+package mang.util.doc.freemarker;
 
 import java.io.BufferedWriter;
 import java.io.File;

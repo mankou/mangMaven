@@ -33,6 +33,9 @@
 	<junit.version>3.8.1</junit.version>
 	<ant.version>1.9.4</ant.version>
 	<freemarker.version>2.3.23</freemarker.version>
+	<poi-ooxml.version>3.13</poi-ooxml.version>
+<!-- 	<poi-ooxml-schemas.version>3.13</poi-ooxml-schemas.version> -->
+<!-- 	<poi-scratchpad.version>3.13</poi-scratchpad.version> -->
 	
 <!-- 	maven插件版本 -->
   	<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
