@@ -38,7 +38,7 @@ public class WordTemplate {
 	 */
 	public void replaceTag(Map<String,String> map){
 		replaceParagraphs(map);
-//		replaceTables(map);
+		replaceTables(map);
 	}
 	
 	/**
