@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.zip.CRC32;
 import java.util.zip.CheckedOutputStream;
 
+import org.apache.log4j.Logger;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 import org.apache.tools.zip.ZipOutputStream;
@@ -29,9 +30,9 @@ import org.apache.tools.zip.ZipOutputStream;
  * create:2016-09-28 17:45:08
  * modify:2016-09-28 17:45:11
  * */
-public class ZipUtil
-{
-  static final int BUFFER = 8192;
+public class ZipUtil {
+	private static Logger logger = Logger.getLogger(ZipUtil.class);
+	private static final int BUFFER = 8192;
   
   /**
    * zip压缩文件或文件（只能是一个文件或文件夹）
@@ -113,62 +114,53 @@ public class ZipUtil
   }
 
   /** 压缩一个文件 */
-  private static void compressFile(File file, ZipOutputStream out, String basedir)
-  {
-    if (!file.exists())
-    {
-      return;
-    }
-    try
-    {
-      BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
-      ZipEntry entry = new ZipEntry(basedir + file.getName());
-      out.putNextEntry(entry);
-      int count;
-      byte data[] = new byte[BUFFER];
-      while ((count = bis.read(data, 0, BUFFER)) != -1)
-      {
-        out.write(data, 0, count);
-      }
-      bis.close();
-    }
-    catch (Exception e)
-    {
-      throw new RuntimeException(e);
-    }
-  }
+	private static void compressFile(File file, ZipOutputStream out, String basedir) {
+		if (!file.exists()) {
+			logger.warn("[zipUtil]" + "文件不存在:" + file.getAbsolutePath());
+			return;
+		}
+		try {
+			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
+			ZipEntry entry = new ZipEntry(basedir + file.getName());
+			out.putNextEntry(entry);
+			int count;
+			byte data[] = new byte[BUFFER];
+			while ((count = bis.read(data, 0, BUFFER)) != -1) {
+				out.write(data, 0, count);
+			}
+			bis.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
   @SuppressWarnings("unchecked")
-public static void zip(Map<String,List<String>> zipInfoMap, String zipFileName)
-  {
-    try
-    {
-      File zipFile = new File(zipFileName);
-      //if(srcPathNameList != null && srcPathNameList.size() > 0){
-    	  FileOutputStream fileOutputStream = new FileOutputStream(zipFile);
-          CheckedOutputStream cos = new CheckedOutputStream(fileOutputStream, new CRC32());
-          ZipOutputStream out = new ZipOutputStream(cos);
-          out.setEncoding(System.getProperty("sun.jnu.encoding"));//设置文件名编码方式
-          
-          Set set = zipInfoMap.entrySet();
-          Iterator i = set.iterator();         
-          while(i.hasNext()){      
-               Map.Entry<String,List<String>> entry1=(Map.Entry<String,List<String>>)i.next();   
-               String basedir = entry1.getKey() + "/";
-               List<String> srcPathNameList = entry1.getValue();
-               for(String srcPathName : srcPathNameList){
-           		File file = new File(srcPathName);   
-             	    if (file.exists())
-             	    	compress(file, out, basedir);
-           	  }  
-          }
-    	  out.close();
-     // }
-    }
-    catch (Exception e)
-    {
-      throw new RuntimeException(e);
-    }
-  }
+	public static void zip(Map<String, List<String>> zipInfoMap, String zipFileName) {
+		try {
+			File zipFile = new File(zipFileName);
+			// if(srcPathNameList != null && srcPathNameList.size() > 0){
+			FileOutputStream fileOutputStream = new FileOutputStream(zipFile);
+			CheckedOutputStream cos = new CheckedOutputStream(fileOutputStream, new CRC32());
+			ZipOutputStream out = new ZipOutputStream(cos);
+			out.setEncoding(System.getProperty("sun.jnu.encoding"));// 设置文件名编码方式
+
+			Set set = zipInfoMap.entrySet();
+			Iterator i = set.iterator();
+			while (i.hasNext()) {
+				Map.Entry<String, List<String>> entry1 = (Map.Entry<String, List<String>>) i.next();
+				String basedir = entry1.getKey() + "/";
+				List<String> srcPathNameList = entry1.getValue();
+				for (String srcPathName : srcPathNameList) {
+					File file = new File(srcPathName);
+					if (file.exists())
+						compress(file, out, basedir);
+				}
+			}
+			out.close();
+			// }
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
   /**
 	 * 解压到指定目录
 	 * @param zipPath

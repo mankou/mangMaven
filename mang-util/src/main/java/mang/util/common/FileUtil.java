@@ -4,11 +4,19 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 
+import org.apache.log4j.Logger;
+
 /**
  * 文件工具类.
  * 
+ * @author man003@163.com
+ * @version 
+ * create:2016-10-10 10:24:29
+ * modfiy:2016-10-10 10:24:33
+ * 
  * */
 public class FileUtil {
+	private static Logger logger = Logger.getLogger(FileUtil.class);
 	/** 
 	 * 根据传入的字符串创建文件.
 	 * <p>如果文件不存在会自动创建,如果文件存在会覆盖
@@ -21,9 +29,8 @@ public class FileUtil {
 	            String parentPath = f.getParent();
 	            FileUtil.mkDir(new File(parentPath));
 	            if (f.exists()) {  
-	                System.out.print("文件存在");  
+	                logger.warn("[FileUtil]"+"文件存在"+f.getAbsolutePath());
 	            } else {  
-	                System.out.print("文件不存在");  
 	                f.createNewFile();// 不存在则创建  
 	            }  
 	  
@@ -182,21 +189,13 @@ public class FileUtil {
 		File destFold = new File(destFoldPath);
 		FileUtil.mkParentDir(destFold);
 		
-		
-		
 		if(!destFold.exists()){
 			//如果目标目录不存在直接rename 再新建一个空目录
 			sourceFold.renameTo(destFold);
-			
 			FileUtil.mkDir(sourceFold);
 		}else{
 			//如果目标目录存在
 			if(isCleanDestFold){
-				//如果目标目录存在 并且允许清空目标目录
-				//fix 清空不行  因为只要目录路径在rename就不会成功
-//				FileUtil.clearFolder(destFoldPath);
-//				sourceFold.renameTo(destFold);
-				
 				FileUtil.delFile(destFoldPath);
 				sourceFold.renameTo(destFold);
 				
@@ -209,8 +208,6 @@ public class FileUtil {
 				}
 			}
 		}
-		
-		
 	}
 	
 	/**
