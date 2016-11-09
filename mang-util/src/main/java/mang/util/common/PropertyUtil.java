@@ -2,7 +2,12 @@ package mang.util.common;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 /**
  * 读取property配置文件的工具类.
@@ -50,6 +55,38 @@ public class PropertyUtil {
 			return null;
 		}
 		return property;
-		
+	}
+	
+	/**
+	 * 利用ResourceBundle获取配置信息 并将配置信息组装成map返回
+	 * @param path property路径
+	 * <ul>
+	 * <li>注：其是以类路径为基准 假如在你的配置文件在 src/com/mang/config.property 则你应该传入com.mang.config</li>
+	 * <li>注：如上注意传入的参数不带后缀名property</li/
+	 * </ul>
+	 * 
+	 * */
+	public static Map<String,String> getBundleMap(String path){
+		ResourceBundle bundle = ResourceBundle.getBundle(path);
+		Map<String,String> propertyMap=new HashMap<String, String>();
+		// 通过资源包拿到所有的名称
+        Enumeration<String> allName = bundle.getKeys();
+        // 遍历
+        while (allName.hasMoreElements()) {
+            // 获取每一个名称
+            String name = (String) allName.nextElement();
+            // 利用已得到的名称通过资源包获得相应的值
+            String value = bundle.getString(name);
+            
+            //中文乱码处理 有时property不是UTF8编码 会出现中文乱码我这里处理下
+            try {
+				String value_cn=new String(value.getBytes("ISO8859-1"),"GB2312");
+				propertyMap.put(name, value_cn);
+			} catch (UnsupportedEncodingException e) {
+				propertyMap.put(name, value);
+				e.printStackTrace();
+			}
+        }
+        return propertyMap;
 	}
 }

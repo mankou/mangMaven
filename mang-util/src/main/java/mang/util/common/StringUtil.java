@@ -38,12 +38,23 @@ public class StringUtil {
 	 */
 	public static String join(String oldStr, String split, String newStr) {
 
-		if (oldStr != null && !"".equals(oldStr)) {
-			oldStr = oldStr + split + newStr;
-		} else {
-			oldStr = newStr;
+//		if (oldStr != null && !"".equals(oldStr)) {
+//			oldStr = oldStr + split + newStr;
+//		} else {
+//			oldStr = newStr;
+//		}
+//		return oldStr;
+		
+		if(oldStr==null && newStr==null){
+			return null;
+		}else if(oldStr==null && newStr!=null){
+			return newStr;
+		}else if(oldStr!=null && newStr==null){
+			return oldStr;
+		}else {
+			return oldStr+split+newStr;
 		}
-		return oldStr;
+		
 	}
 	
 	/** 

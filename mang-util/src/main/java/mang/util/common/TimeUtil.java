@@ -302,6 +302,20 @@ public class TimeUtil {
 	}
 	
 	/**
+	 * 获取当前时间的某种时间字符串
+	 * 需自己传入时间格式
+	 * @param time 时间
+	 * @param format 日期格式  如yyyy-MM-dd yyyyMMddHHmmss
+	 * @return String 格式化后的时间字符串
+	 * */
+	public static String getCurrentDataString(String format){
+		Timestamp time=getCurrentTime();
+		DateFormat sdf = new SimpleDateFormat(format);  
+		String str = sdf.format(time);
+		return str;
+	}
+	
+	/**
 	 * 返回当前时间的时间字符串 .
 	 * 需自己传入时间格式
 	 * @param format 日期格式  如yyyy-MM-dd yyyyMMddHHmmss

@@ -1,8 +1,6 @@
 package mang.util.common;
 
 import java.math.BigDecimal;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 数字处理工具包.
