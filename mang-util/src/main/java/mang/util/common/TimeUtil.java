@@ -289,6 +289,18 @@ public class TimeUtil {
 	}
 	
 	/**
+	 * 给一个时间格式字符串 返回当前时间的字符串
+	 * @param time 时间
+	 * @param format 日期格式  如yyyy-MM-dd yyyyMMddHHmmss
+	 * @return String 格式化后的时间字符串
+	 * */
+	public static String getDateString(String format){
+		Timestamp now=getCurrentTime();
+		String str=getDateString(now, format);
+		return str;
+	}
+	
+	/**
 	 * 给一个时间 返回该时间的字符串  
 	 * 需自己传入时间格式
 	 * @param time 时间
@@ -296,20 +308,14 @@ public class TimeUtil {
 	 * @return String 格式化后的时间字符串
 	 * */
 	public static String getDateString(Timestamp time,String format){
-		DateFormat sdf = new SimpleDateFormat(format);  
-		String str = sdf.format(time);
-		return str;
-	}
-	
-	/**
-	 * 获取当前时间的某种时间字符串
-	 * 需自己传入时间格式
-	 * @param time 时间
-	 * @param format 日期格式  如yyyy-MM-dd yyyyMMddHHmmss
-	 * @return String 格式化后的时间字符串
-	 * */
-	public static String getCurrentDataString(String format){
-		Timestamp time=getCurrentTime();
+		if(time==null){
+			time=getCurrentTime();
+		}
+		
+		if(format==null||"".equals(format)){
+			format="yyyy-MM-dd";
+		}
+		
 		DateFormat sdf = new SimpleDateFormat(format);  
 		String str = sdf.format(time);
 		return str;
