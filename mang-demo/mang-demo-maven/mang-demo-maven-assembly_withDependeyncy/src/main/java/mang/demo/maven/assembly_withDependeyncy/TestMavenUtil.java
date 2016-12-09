@@ -2,7 +2,7 @@ package mang.demo.maven.assembly_withDependeyncy;
 
 import java.sql.Timestamp;
 
-import mang.util.TimeUtil;
+import mang.util.common.TimeUtil;
 
 public class TestMavenUtil {
 	public static void main( String[] args )
