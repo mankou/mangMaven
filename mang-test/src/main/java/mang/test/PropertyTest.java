@@ -2,7 +2,7 @@ package mang.test;
 
 import java.util.Properties;
 
-import mang.util.PropertyUtil;
+import mang.util.common.PropertyUtil;
 
 public class PropertyTest {
 

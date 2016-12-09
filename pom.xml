@@ -30,6 +30,7 @@
 	<mang-demo-maven-assembly_mixture.version>0.0.1-SNAPSHOT</mang-demo-maven-assembly_mixture.version>
     
 <!--     依赖的工程的版本 -->
+	<log4j.version>1.2.17</log4j.version>
 	<junit.version>3.8.1</junit.version>
 	<ant.version>1.9.4</ant.version>
 	<freemarker.version>2.3.23</freemarker.version>
