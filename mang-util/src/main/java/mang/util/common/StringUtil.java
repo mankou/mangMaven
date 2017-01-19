@@ -311,5 +311,17 @@ public class StringUtil {
 		}
 		return result;
 	}
+	
+	/**
+	 * 转大写
+	 * */
+	public static String toUpperCase(String str){
+		if(str==null){
+			return null;
+		}
+		
+		String result=str.toUpperCase();
+		return result;
+	}
 
 }
