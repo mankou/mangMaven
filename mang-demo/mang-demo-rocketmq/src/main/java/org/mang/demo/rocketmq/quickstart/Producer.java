@@ -20,7 +20,7 @@ public class Producer {
 			producer.setNamesrvAddr(nameservAddr);
 			producer.start();
 			
-			//TODO producer������ó�ʱ��
+			//TODO producer 设置超时
 			
 			
 			for(int i=0;i<5;i++){
