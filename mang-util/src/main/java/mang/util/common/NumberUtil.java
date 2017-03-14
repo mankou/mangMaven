@@ -78,5 +78,29 @@ public class NumberUtil {
 		return num1<num2?num1:num2;
 	}
 	
+	/**
+	 * 将字符串数字解析成数字
+	 * */
+	public static  Object parseNumber(String numberStr,Class objClass){
+		Object obj=null;
+		Double douValue=Double.parseDouble(numberStr);
+		if(objClass==int.class || objClass==Integer.class){
+			 obj=new Integer(douValue.intValue());
+		}else if(objClass==long.class || objClass==Long.class){
+//			obj=Long.parseLong(numberStr);
+			 obj=new Long(douValue.longValue());
+		}else if(objClass==float.class||objClass==Float.class){
+//			obj=Float.parseFloat(numberStr);
+			obj=new Float(douValue.floatValue());
+		}else if(objClass==double.class || objClass==Double.class){
+//			obj=Double.parseDouble(numberStr);
+			obj=douValue;
+		}else if(objClass==BigDecimal.class){
+			obj=new BigDecimal(numberStr);
+		}
+		
+		return obj;
+	}
+	
 	
 }

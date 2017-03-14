@@ -235,5 +235,13 @@ public class FileUtil {
 		String fileName=file.getName();
 		return fileName;
 	}
+	
+	/**
+	 * 根据文件名获取文件后缀名.
+	 * 如文件名是 test1.xlsx 则返回xlsx
+	 * */
+	public static String getFileType(String fileName){
+	    return fileName.substring(fileName.lastIndexOf(".")+1);
+	}
 
 }
